@@ -86,3 +86,23 @@
 - Global variables outside a function don't reset between calls, causing state to leak across multiple calls (found this bug in twttr.py)
 - Good tests need to cover edge cases (capitals, numbers, punctuation), not just the simplest case, to actually catch bugs
 ```
+## Lecture 5 what I have learned:
+```
+- open(filename, mode), a built-in function that opens a file and returns a file object; needs to be stored in a variable to be used
+- Modes: "r" (read, default, errors if file doesn't exist), "w" (write, overwrites the whole file), "a" (append, adds to the end)
+- with, runs setup code before a block and cleanup code after it automatically, even if an error happens inside — the error still stops the program, but the file still gets closed on the way out
+- .write(text), .read(), .readline(), .readlines(), .close() — the main file object methods
+- .strip(), .lstrip(), .rstrip() — remove whitespace from both/left/right sides of a string
+- "".join(list), combines a list of strings into one string using the string it's called on as the separator
+- csv.reader(file), parses a file line by line into lists of values, splitting on commas automatically
+- csv.DictReader(file), same idea but returns each row as a dictionary, using the header row as keys
+- csv.writer(file) and .writerow(list), write a single row of values to a file as CSV
+- csv.DictWriter(file, fieldnames=[...]), writes rows from dictionaries instead of lists; fieldnames sets both column order and expected keys
+- newline="" in open(), prevents Windows from double-adding line breaks when writing CSVs with the csv module
+- key=, an optional parameter for sorted(), max(), and min() that takes a function; that function is called separately on each item (not the whole list) to decide what to compare by
+- lambda, a way to write a small unnamed function in one line: lambda variables: return_value — useful for short throwaway functions like a sorted() key, but limited to a single expression (no loops, no multiple statements)
+- PIL / Pillow, a third-party image library; installed with pip install pillow but imported as PIL
+- Image.open(filename), opens an image file and returns an Image object (needs to be stored in a variable)
+- .save(filename, ...), writes an Image object to a file; save_all=True, append_images=, duration=, and loop= are used together to build an animated GIF from multiple images
+- sys.argv, a list of command-line arguments; sys.argv[0] is always the script's own filename, sys.argv[1:] is everything typed after it
+- sys.exit(), exits a program early, used for handling invalid input instead of letting the program crash or continue
