@@ -86,7 +86,7 @@
 - Global variables outside a function don't reset between calls, causing state to leak across multiple calls (found this bug in twttr.py)
 - Good tests need to cover edge cases (capitals, numbers, punctuation), not just the simplest case, to actually catch bugs
 ```
-## Lecture 5 what I have learned:
+## Lecture 6 what I have learned:
 ```
 - open(filename, mode), a built-in function that opens a file and returns a file object; needs to be stored in a variable to be used
 - Modes: "r" (read, default, errors if file doesn't exist), "w" (write, overwrites the whole file), "a" (append, adds to the end)
@@ -104,5 +104,3 @@
 - PIL / Pillow, a third-party image library; installed with pip install pillow but imported as PIL
 - Image.open(filename), opens an image file and returns an Image object (needs to be stored in a variable)
 - .save(filename, ...), writes an Image object to a file; save_all=True, append_images=, duration=, and loop= are used together to build an animated GIF from multiple images
-- sys.argv, a list of command-line arguments; sys.argv[0] is always the script's own filename, sys.argv[1:] is everything typed after it
-- sys.exit(), exits a program early, used for handling invalid input instead of letting the program crash or continue
