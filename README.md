@@ -104,3 +104,42 @@
 - PIL / Pillow, a third-party image library; installed with pip install pillow but imported as PIL
 - Image.open(filename), opens an image file and returns an Image object (needs to be stored in a variable)
 - .save(filename, ...), writes an Image object to a file; save_all=True, append_images=, duration=, and loop= are used together to build an animated GIF from multiple images
+```
+## Lecture 7 what I have learned:
+```
+- re, a built-in module for pattern matching in strings; imported with import re
+- raw strings, r"...", tell Python to treat backslashes literally instead of as escape sequences; needed for regex patterns
+- escape sequences, backslash + character combos in normal strings that get special meaning, like \n (newline), \t (tab), \\ (literal backslash)
+- re.search(pattern, string, flags=0), scans the whole string looking for a match anywhere; returns a match object if found, None if not
+- re.match(pattern, string, flags=0), only checks for a match starting at position 0 of the string; doesn't require the match to reach the end
+- re.fullmatch(pattern, string, flags=0), requires the entire string to match the pattern, start to finish, like having ^ and $ automatically wrapped around it
+- re.sub(pattern, replacement, string, count=0, flags=0), replaces every match of a pattern in a string with a replacement, returns the new string (original is unchanged)
+- re.split(pattern, string, maxsplit=0, flags=0), splits a string into a list wherever the pattern matches, instead of a fixed separator
+- re.findall(pattern, string, flags=0), returns a list of every match found in the string, instead of stopping at the first one
+- ., matches any single character except a newline
+- *, zero or more times
+- +, one or more times
+- ?, zero or one time
+- {m}, exactly m times
+- {m,n}, between m and n times
+- {m,}, m or more times
+- {,n}, up to n times
+- [...], a character class, matches one character that's in the set listed
+- [^...], a negated character class, matches one character that's NOT in the set
+- [a-z], a range inside a character class
+- \d / \D, a digit / not a digit
+- \w / \W, a word character (letter, digit, underscore) / not a word character
+- \s / \S, a whitespace character / not a whitespace character
+- ^, anchors to the start of the string (different meaning than ^ inside [...], where it negates instead)
+- $, anchors to the end of the string
+- (...), a capturing group; groups characters together and saves the matched text for later use
+- (?:...), a non-capturing group; groups characters together but doesn't save the matched text
+- |, means "or" between two alternatives, only inside a regex pattern (different from | in normal Python, which is the bitwise operator)
+- \, escapes a special character so it's treated literally, like \. for an actual period
+- flags, optional settings passed to regex functions via flags=, like re.IGNORECASE, re.MULTILINE, re.DOTALL; combine multiple with |
+- .group() / .group(0), returns the whole match from a match object
+- .group(1), .group(2), etc., returns one specific captured group
+- .groups(), returns all captured groups at once, as a tuple
+- the walrus operator, :=, assigns a value to a variable and uses it in the same expression at once, e.g. if matches := re.search(pattern, string):
+- .removeprefix(prefix), removes a given prefix from the start of a string if present, returns the string unchanged if it isn't there
+- .removesuffix(suffix), same idea but removes from the end of the string instead
