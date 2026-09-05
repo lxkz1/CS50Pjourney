@@ -143,3 +143,44 @@
 - the walrus operator, :=, assigns a value to a variable and uses it in the same expression at once, e.g. if matches := re.search(pattern, string):
 - .removeprefix(prefix), removes a given prefix from the start of a string if present, returns the string unchanged if it isn't there
 - .removesuffix(suffix), same idea but removes from the end of the string instead
+```
+## Lecture 8 what I have learned:
+```
+- class, a blueprint for a custom data type; bundles data and behavior together
+- object / instance, one actual thing built from a class, holding its own data; both words mean the same thing
+- attribute (also called instance variable), a piece of data stored on one specific object, accessed with object.attribute
+- method, a function that belongs to a class, called with object.method()
+- ClassName(...), calling the class like a function to construct and return a new object
+- __init__(self, ...), the constructor; runs automatically every time a new object is created, used to set up its starting attributes
+- self, the specific object currently being created or worked on; passed in automatically by Python, you never supply it in the call
+- arguments are matched to parameters by position, not by name — the variable names you use when calling a class don't need to match the parameter names in __init__
+- object.attribute = value, creates or updates that attribute on the object
+- __str__(self), runs automatically when the object is printed or converted with str(); must return a string
+- only double-underscore ("dunder") methods run automatically — a regular method you write yourself never runs unless you call it
+- @property, marks a method as the getter; runs automatically when you read the attribute like student.house (no parentheses)
+- @x.setter, marks a method as the setter; runs automatically when you assign like student.house = value, letting you validate before storing
+- getter, the method that returns an attribute's value; setter, the method that assigns it
+- reading and writing are a fork, not a chain — a read only triggers the getter, a write only triggers the setter, never both
+- self._x, the convention for the real hidden storage spot behind a property; the underscore also means "internal, don't touch from outside"
+- returning self.x inside its own getter calls the getter again forever and crashes with RecursionError — that's why the underscore name exists
+- the getter takes only self, and the setter takes self plus exactly one value; neither can take extra parameters
+- @classmethod, a method belonging to the class itself; receives the class as cls instead of self, and is called on the class (Student.get()) without needing an object to exist
+- cls(...) inside a classmethod is the same as calling the class directly, e.g. Student(...)
+- @staticmethod, a method that takes neither self nor cls; just a plain function living inside the class for organization
+- inheritance, one class taking on all the attributes and methods of another; the original is the parent/superclass, the new one the child/subclass
+- class Child(Parent), the syntax for inheriting
+- super(), refers to the parent class; super().__init__(...) runs the parent's constructor, which does NOT run automatically if the child defines its own __init__
+- operator overloading, defining what standard operators mean for your own objects
+- __add__(self, other), runs automatically when + is used on the object; also __sub__ for -, __eq__ for ==, __lt__ for 
+- methods that change the object's state (like deposit/withdraw) don't return anything; methods that report a value (like a property) do
+- += and -= are statements, not expressions — they can't go inside an if condition or after return, use plain + or - there instead
+- raise, deliberately triggers an exception and stops normal execution, e.g. raise ValueError("Invalid house")
+- try / except, catches a raised exception so the program handles it instead of crashing
+- pytest.raises(SomeError), used as a context manager (with pytest.raises(ValueError):) to assert that code raises that error; needed to test sys.exit(), which raises SystemExit
+- "error collecting" in pytest means the file couldn't even be imported — usually a syntax error, or a missing if __name__ == "__main__" guard
+- match / case, compares one value against several patterns, like a switch statement; case _ is the catch-all
+- tuple, an ordered, immutable collection written with parentheses like (1, 2, 3); indexed like a list but can't be changed
+- set, an unordered collection of unique values written with curly braces like {1, 2, 3}; duplicates removed automatically, no indexing, fast membership tests
+- datetime's date class, imported with from datetime import date; date.today() and date.fromisoformat("YYYY-MM-DD") are classmethods, and subtracting two dates gives a timedelta with a .days attribute
+- inflect, a third-party module for converting numbers to words with p.number_to_words(n)
+- fpdf2, a third-party module for creating PDFs: add_page(), set_font(), cell(w, h, text, align="C"), image(name, x, y, w), output(filename)
